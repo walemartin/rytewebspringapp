@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Account List</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h1>All Accounts</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Account Number</th>
+            <th>Account Holder</th>
+            <th>Balance</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="account : ${accounts}">
+            <td><a th:href="@{/banking/{accountNumber}(accountNumber=${account.accountNumber})}" th:text="${account.accountNumber}"></a></td>
+            <td th:text="${account.accountHolder}"></td>
+            <td th:text="${account.balance}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/banking/create}">Create Account</a>
+</section>
+
+</body>
+</html>

@@ -17,14 +17,18 @@ public class UserController {
 
     private final UserService userService;
 
+    @RequestMapping("/greet")
+    public @ResponseBody String greeting() {
+        return "Hello, World";
+    }
     @GetMapping("/home")
-    public String Home() throws Exception {
+    public String Home() {
 
         return "index";
     }
 
     @GetMapping("/new")
-    public String showNewUserForm(Model model) throws Exception {
+    public String showNewUserForm(Model model) {
         model.addAttribute("user", new User());
         return "new-user-form";
     }

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+<head>
+  <meta charset="UTF-8">
+  <title>Transfer</title>
+</head>
+<body>
+<section layout:fragment="content">
+  <h1>Transfer from Account: ${account.number}</h1>
+  <form action="@{/banking/{fromAccountNumber}/transfer/{toAccountNumber}(fromAccountNumber=${account.number},toAccountNumber=${destinationAccount.number})}" method="post">
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" name="amount" step="0.01" required>
+    <label for="destinationAccount">Destination Account:</label>
+    <select id="destinationAccount" name="destinationAccount">
+      <option th:each="account : ${accounts}" th:value="${account.number}" th:text="${account.number}" th:selected="${account.number == destinationAccount.number}"></option>
+    </select>
+    <button type="submit">Transfer</button>
+  </form>
+  <a th:href="@{/banking/{accountNumber}(accountNumber=${account.number})}">Back to Account Details</a>
+</section>
+
+</body>
+</html>
