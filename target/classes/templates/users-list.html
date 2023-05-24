@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+<head>
+  <meta charset="UTF-8">
+  <title>Users List</title>
+</head>
+<body>
+
+<section layout:fragment="content">
+
+  <h2>User List</h2>
+  <form action="#" th:action="@{/users/search}" method="get">
+    <label for="searchTerm">Search by Username:</label>
+    <input type="text" class="form-control" id="searchTerm" name="searchTerm" required>
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>Username</th>
+      <th>password</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+      <td th:text="${user.username}"></td>
+      <td th:text="${user.password}"></td>
+      <td>
+        <a th:href="@{/users/{id}(id=${user.id})}" class="btn btn-primary">View</a>
+        <a th:href="@{/users/edit/{id}(id=${user.id})}" class="btn btn-primary">Edit</a>
+        <a th:href="@{/users/delete/{id}(id=${user.id})}" onclick="return confirm('Are you sure you want to delete this user?')" class="btn btn-primary">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <a href="#" th:href="@{/users/new}" class="btn btn-primary">Create New User</a>
+
+</section>
+
+
+
+
+</body>
+</html>

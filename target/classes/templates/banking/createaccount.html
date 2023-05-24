@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Account</title>
+</head>
+<body>
+<section layout:fragment="content">
+  <h1>Create Account</h1>
+  <form th:action="@{/banking/create}" method="post">
+    <label for="accountHolder">Account Holder:</label>
+    <input type="text" id="accountHolder" name="accountHolder" required>
+    <label for="initialBalance">Initial Balance:</label>
+    <input type="number" id="initialBalance" name="initialBalance" required>
+    <button type="submit">Create Account</button>
+  </form>
+  <a th:href="@{/banking/accounts}">Back to All Accounts</a>
+</section>
+
+
+</body>
+</html>

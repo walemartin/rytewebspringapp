@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+<head>
+  <meta charset="UTF-8">
+  <title>User Details</title>
+</head>
+<body>
+
+<section layout:fragment="content">
+  <h2>User Details</h2>
+  <table class="table table-hover">
+    <tr>
+      <td>Username:</td>
+      <td th:text="${user.username}"></td>
+    </tr>
+    <tr>
+      <td>Email:</td>
+      <td th:text="${user.password}"></td>
+    </tr>
+  </table>
+  <a th:href="@{/users/edit/{id}(id=${user.id})}">Edit User</a>
+  <a th:href="@{/users/delete/{id}(id=${user.id})}" onclick="return confirm('Are you sure you want to delete this user?')">Delete User</a>
+
+</section>
+
+
+
+</body>
+</html>
